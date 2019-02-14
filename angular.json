@@ -42,7 +42,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
+              "extractCss": false,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -127,6 +127,42 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ff-img-overlay": {
+      "root": "projects/ff-img-overlay",
+      "sourceRoot": "projects/ff-img-overlay/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ff-img-overlay/tsconfig.lib.json",
+            "project": "projects/ff-img-overlay/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ff-img-overlay/src/test.ts",
+            "tsConfig": "projects/ff-img-overlay/tsconfig.spec.json",
+            "karmaConfig": "projects/ff-img-overlay/karma.conf.js",
+            "codeCoverage": true
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ff-img-overlay/tsconfig.lib.json",
+              "projects/ff-img-overlay/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

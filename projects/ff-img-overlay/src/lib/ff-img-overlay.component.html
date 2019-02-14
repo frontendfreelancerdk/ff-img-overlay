@@ -1,0 +1,9 @@
+<div class="ff-img-overlay_wrapper" (mouseenter)="onMouseenter($event)" (mouseleave)="onMouseleave($event)">
+  <div class="ff-img-overlay_base {{ scale ? 'scale' : ''}}">
+    <img class="ff-img-overlay_img" src="{{imgUrl}}" alt=""
+         *ngIf="!mainTmp; else mainTmp" #image/>
+  </div>
+  <div class="ff-img-overlay_overlay init" #overlay id="test">
+    <p class="ff-img-overlay_text" *ngIf="!overlayTmp; else overlayTmp">{{text ? text : ''}}</p>
+  </div>
+</div>

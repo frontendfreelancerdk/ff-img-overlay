@@ -1,0 +1,57 @@
+:host{
+  display: block;
+}
+
+.ff-img-overlay {
+  &_wrapper {
+    position: relative;
+    overflow: hidden;
+
+    &:hover .ff-img-overlay_overlay {
+      //opacity: 1;
+    }
+
+    &:hover .ff-img-overlay_base.scale {
+      transform: scale(1.2);
+    }
+  }
+
+  &_base {
+    width: 100%;
+    transition: all 0.5s ease-in;
+
+  }
+  &_img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &_overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: lightseagreen;
+    &.init{
+      animation-duration: 0s;
+      animation-fill-mode: both;
+    }
+  }
+
+  &_text {
+    margin: 0;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}

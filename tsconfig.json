@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ff-img-overlay": [
+        "dist/ff-img-overlay"
+      ],
+      "ff-img-overlay/*": [
+        "dist/ff-img-overlay/*"
+      ]
+    }
   }
 }
