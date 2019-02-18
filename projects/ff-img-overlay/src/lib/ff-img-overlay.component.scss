@@ -40,6 +40,15 @@
       animation-duration: 0s;
       animation-fill-mode: both;
     }
+    &.ff-leave{
+      opacity: 0;
+    }
+    &.ff-enter{
+      opacity: 1;
+    }
+    &.ff-animated{
+      transition: all 0.5s ease;
+    }
   }
 
   &_text {
@@ -55,3 +64,4 @@
     text-align: center;
   }
 }
+

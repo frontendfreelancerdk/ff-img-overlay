@@ -1,27 +1,112 @@
-# FfImgOverlayApp
+[![Build Status](https://travis-ci.org/frontendfreelancerdk/ff-img-overlay.svg?branch=master)](https://travis-ci.org/frontendfreelancerdk/ff-img-overlay)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
 
-## Development server
+# ff-img-overlay
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installing 
 
-## Code scaffolding
+npm install ff-img-overlay --save
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Using
 
-## Build
+#### Simple usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```html
+<ff-img-overlay 
+   [imgUrl]="'/images/iphone25.png'" 
+   [text]="'IPhone 25'"
+   <!-- if [scale] is true base image will have a slight scaling-->
+   [scale]="true"
+></ff-img-overlay>
+```
 
-## Running unit tests
+#### Usage with own templates:
+```html
+<!-- You can create some template as base -->
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<ng-template #myBase>
+  <img src="/images/iphone25.png" alt="" style="width:100%;height: auto; display: block">
+  ...
+</ng-template>
 
-## Running end-to-end tests
+<!-- ... and as overlay -->
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+<ng-template #overlay>
+  <p class="myClass">IPhone 25!</p>
+  ...
+</ng-template>
 
-## Further help
+<ff-img-overlay
+<!-- You can use [mainTmp] attribute instead of [imgUrl] and put your template reference variable for base-->
+  [mainTmp]="mainTmp"
+  <!-- and [overlayTmp] property instead of [text] for overlay-->
+  [overlayTmp]="overlay"
+></ff-img-overlay>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#### Animations
+You can set your own animations for appearance and disappearance:
+```html
+<ff-img-overlay
+  <!--Just use [cssClassEnter] property for overlay appearance-->
+  [cssClassEnter]="'zoomIn'"
+  <!-- and [cssClassLeave] for overlay disappearance-->
+  [cssClassLeave]="'zoomOut'"
+  <!-- Also you should specify some css class for animation. 
+  It means that this class must have css transition property or animation-duration-->
+  [cssClassAnimated]="'animated'"
+></ff-img-overlay>
+```
+
+#### Events hendle
+
+You can handle events, component has outputs for that:
+
+```html
+<ff-img-overlay
+  (mouseLeave)="leaveHandler($event)"
+  (mouseEnter)="enterHandler($event)"
+></ff-img-overlay>
+```
+
+### Types and default values 
+```typescript
+  @Input() mainTmp : TemplateRef<any>;
+  @Input() overlayTmp : TemplateRef<any>;
+  
+  @Input() imgUrl : string;
+  @Input() text : string;
+  
+  @Input() scale : boolean;
+
+  @Input() cssClassEnter : string = 'ff-enter';
+  @Input() cssClassLeave : string = 'ff-leave';
+  @Input() cssClassAnimated : string = 'ff-animated';
+
+
+  @Output() mouseEnter : EventEmitter<any>;
+  @Output() mouseLeave : EventEmitter<any>;
+```
+
+## Styling 
+
+You can change default styles. That can be used to target the override 
+
+```css
+.ff-img-overlay_wrapper{
+
+}
+.ff-img-overlay_base{
+
+}
+.ff-img-overlay_img{
+
+}
+.ff-img-overlay_overlay{
+
+}
+.ff-img-overlay_text{
+
+}
+
+```

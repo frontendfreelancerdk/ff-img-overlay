@@ -1,7 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild, NgZone } from '@angular/core';
-import { timer } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { animate, group, query, style, transition, trigger } from '@angular/animations';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
   selector   : 'ff-img-overlay',
@@ -15,9 +12,9 @@ export class FFImgOverlayComponent implements OnInit {
   @Input() text : string;
   @Input() scale : boolean;
 
-  @Input() cssClassEnter : string;
-  @Input() cssClassLeave : string;
-  @Input() cssClassAnimated : string;
+  @Input() cssClassEnter = 'ff-enter';
+  @Input() cssClassLeave = 'ff-leave';
+  @Input() cssClassAnimated = 'ff-animated';
 
 
   @Output() mouseEnter = new EventEmitter();
