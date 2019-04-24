@@ -1,6 +1,6 @@
 {
   "name": "ff-img-overlay-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,6 +9,7 @@
     "test_lib": "ng test ff-img-overlay --watch=false --browsers=ChromeHeadless",
     "build_lib": "ng build ff-img-overlay",
     "prebuild_lib": "node copy_readme",
+    "watch_lib": "ng build ff-img-overlay --watch",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

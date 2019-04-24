@@ -7,10 +7,6 @@
     position: relative;
     overflow: hidden;
 
-    &:hover .ff-img-overlay_overlay {
-      //opacity: 1;
-    }
-
     &:hover .ff-img-overlay_base.scale {
       transform: scale(1.2);
     }
