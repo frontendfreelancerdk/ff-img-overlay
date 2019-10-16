@@ -1,16 +1,16 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild } from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild} from '@angular/core';
 
 @Component({
-  selector   : 'ff-img-overlay',
+  selector: 'ff-img-overlay',
   templateUrl: 'ff-img-overlay.component.html',
-  styleUrls  : ['ff-img-overlay.component.scss']
+  styleUrls: ['ff-img-overlay.component.scss']
 })
 export class FFImgOverlayComponent implements OnInit {
-  @Input() mainTmp : TemplateRef<any>;
-  @Input() overlayTmp : TemplateRef<any>;
-  @Input() imgUrl : string;
-  @Input() text : string;
-  @Input() scale : boolean;
+  @Input() mainTmp: TemplateRef<any>;
+  @Input() overlayTmp: TemplateRef<any>;
+  @Input() imgUrl: string;
+  @Input() text: string;
+  @Input() scale: boolean;
 
   @Input() cssClassEnter = 'ff-enter';
   @Input() cssClassLeave = 'ff-leave';
@@ -20,12 +20,12 @@ export class FFImgOverlayComponent implements OnInit {
   @Output() mouseEnter = new EventEmitter();
   @Output() mouseLeave = new EventEmitter();
 
-  @ViewChild('overlay') overlay : ElementRef;
-  @ViewChild('image') image : ElementRef;
+  @ViewChild('overlay', {static: true}) overlay: ElementRef;
+  @ViewChild('image', {static: false}) image: ElementRef;
 
   private _firstRun = true;
 
-  constructor(private renderer : Renderer2) {
+  constructor(private renderer: Renderer2) {
   }
 
   ngOnInit() {
